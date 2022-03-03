@@ -1,0 +1,40 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>New review</h1>
+
+{#    <form method="POST" action="/save_review">#}
+    <form method="POST" action="/api/backoffice/review">
+        <div class="form-group">
+            <input class="form-control" type="text" name="user" placeholder="User name">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" placeholder="Review text" name="text" id="" cols="30" rows="10"></textarea>
+        </div>
+
+
+        {% set ratings = [
+            'Price',
+            'Quality',
+            'Delivery time',
+            'Worthy'
+        ] %}
+        <fieldset>
+            <legend>How would you rate those aspects of the product?</legend>
+            <div class="form-group">
+                {% for index, rating in ratings %}
+                    <fieldset>
+                        <div>{{ rating }}</div>
+                        {% for i in 1..5 %}
+                            <label for="rating_{{ index }}-{{ i }}" class="radio-inline">
+                                <input type="radio" name="rating_{{ index }}" id="rating_{{ index }}-{{ i }}" value="{{ i }}"> {{ i }}
+                            </label>
+                        {% endfor %}
+                    </fieldset>
+                {% endfor %}
+            </div>
+        </fieldset>
+
+        <button type="submit" class="btn btn-default">Send</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,12 @@
+App\Domain\Model\Review:
+  attributes:
+    id:
+      groups: ['full', 'reference']
+    user:
+      groups: ['full', 'reference']
+    text:
+      groups: ['full', 'reference']
+    averageRating:
+      groups: ['full', 'reference']
+    createdAt:
+      groups: ['full', 'reference']

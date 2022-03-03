@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Domain\Model\Review"
+            table="reviews"
+            repository-class="App\Infrastructure\Persistence\Doctrine\ReviewRepository"
+    >
+        <id name="id" type="guid" column="id">
+            <generator strategy="UUID"/>
+        </id>
+        <field name="user" column="user" type="string" nullable="false" />
+        <field name="text" column="text" type="text" />
+        <field name="averageRating" column="average_rating" type="decimal" />
+        <field name="createdAt" type="datetime" column="created" />
+
+        <indexes>
+            <index columns="user"/>
+        </indexes>
+    </entity>
+</doctrine-mapping>

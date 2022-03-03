@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Reviews</h1>
+    <table class="table">
+        <tr>
+            <th>User</th>
+            <th>Review text</th>
+            <th>Date</th>
+            <th>Rating</th>
+        </tr>
+
+        {% for review in items %}
+            <tr>
+                <td>{{ review.user }}</td>
+                <td>{{ review.text }}</td>
+                {# I tried using 'format_datetime' but i couldn't install twig dependencies through Composer  #}
+                <td>{{ review.createdAt | date('Y-m-d H:i:s')  }}</td>
+                <td>{{ review.averageRating }}</td>
+
+            </tr>
+        {% endfor %}
+    </table>
+
+    <a href="/api/backoffice/review/form" class="btn btn-default">New review</a>
+{% endblock %}
